@@ -32,7 +32,7 @@ TRANSMITTER SIDE:-
 
 int Pushbutton = 5;
 int bstate = 0;
-For the pushbutton. In the void setup function I set the pushbutton as the input. In the void loop function we read the digital state of the Arduino’s pin 5 and store it in the bstate variable which is then stored in the data array at location 0 and finally we send the data array to the node00 which is the receiver side. Now, let’s take a look at the receiver side programming.
+For the pushbutton. In the void setup function I set the pushbutton as the input. In the void loop function we read the digital state of the Arduino’s pin 5 and store it in the bstate variable which is then stored in the data array at location 0 and finally we send the data array to the node00 which is the receiver side. 
 
 RECIEVER SIDE:-
 
@@ -40,7 +40,7 @@ On the receiver side I deleted the libraries which I added for the i2c LCD. I de
 
 Finally, we check if we have received the data from the node01. So, if the data is received then store the value in data1. Then we use the two if conditions to check if the received number is 1 or 0. If the received number is 1 then stop the vibration motor and if the received number is 0 then it means the pushbutton on the transmitter side is pressed, so the Arduino starts the vibration motor, 200 represents the vibration intensity. You can set any value between 0 and 255. So, that’s all about the programming.
 
-Finally, I uploaded the two codes and I successfully controlled the Micro Vibration motor wirelessly. For the practical demonstration watch video tutorial given below.  If you have any questions regarding this project, let me know in a comment.
+Finally, I uploaded the two codes and I successfully controlled the Micro Vibration motor wirelessly.
 
 
 library link:- 
