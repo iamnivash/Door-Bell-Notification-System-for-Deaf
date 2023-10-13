@@ -1,0 +1,32 @@
+//TRANSMITTER PROGRAM:- 
+
+// Node01
+#include <RF24.h>
+#include <RF24Network.h>
+#include <SPI.h>
+RF24 radio(9, 10); // nRF24L01 (CE,CSN)
+RF24Network network(radio); // Include the radio in the network
+const uint16_t this_node = 01; // Address of this node in Octal format
+const uint16_t node00 = 00; 
+unsigned long data[6]; // number of sensors or values to send
+
+int Pushbutton = 5; // Push Button is connected with the Arduino's pin 5
+int bstate = 0; // this stores the button state in the form of 0 or 1
+ 
+void setup() {
+SPI.begin();
+radio.begin();
+network.begin(90, this_node); //(channel, node address)
+radio.setDataRate(RF24_2MBPS);
+pinMode(Pushbutton, INPUT_PULLUP);
+}
+
+
+void loop() {
+network.update();
+unsigned long bstate = digitalRead(Pushbutton); // reads the button state
+data[0] = bstate; // stores the button state at location 0 in the array 
+
+RF24NetworkHeader header7(node00);
+bool ok = network.write(header7, &data, sizeof(data)); // Send the data
+}
