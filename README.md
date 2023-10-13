@@ -45,9 +45,7 @@ Finally, I uploaded the two codes and I successfully controlled the Micro Vibrat
 
 library link:- 
 
-https://www.electroniclinic.com/wp-content/uploads/2021/01/RF24Network.zip 
-
-https://www.electroniclinic.com/wp-content/uploads/2021/01/RF24.zip 
+https://drive.google.com/file/d/1MttZpeeNsuolQiRNqxvIdMPRzixAfLoE/view?usp=drive_link
 
 https://drive.google.com/file/d/1zr-OX6XwLv8CwA9sM877eJLOCksy5DjT/view?usp=drive_link
  
