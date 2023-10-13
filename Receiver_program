@@ -1,0 +1,53 @@
+//Reciever program:-
+
+// Node00
+#include <RF24.h>
+#include <RF24Network.h>
+#include <SPI.h>
+#include <Wire.h>
+
+RF24 radio(9, 10); // nRF24L01 (CE,CSN)
+RF24Network network(radio); // Include the radio in the network
+const uint16_t this_node = 00; // Address of our node in Octal format
+unsigned long data[6]; // number of sensors
+
+unsigned long data1; 
+
+int VibrationMotor = 5; 
+
+void setup() {
+Serial.begin(9600);
+SPI.begin();
+radio.begin();
+network.begin(90, this_node); //(channel, node address)
+radio.setDataRate(RF24_2MBPS);
+
+ pinMode(VibrationMotor, OUTPUT);
+}
+void loop() {
+ 
+network.update();
+while ( network.available() ) { // Is there any incoming data?
+RF24NetworkHeader header;
+
+network.read(header, &data, sizeof(data)); // Read the incoming data
+
+if (header.from_node == 1) { // If data comes from Node 01
+data1 = data[0];
+
+                if( data1 == 1)
+                {
+                 analogWrite(VibrationMotor, 0);
+                }
+                 if( data1 == 0)
+                {
+                  analogWrite(VibrationMotor, 200); // change this value if you need more or less vibration
+                }
+}
+
+
+
+
+}
+
+}
